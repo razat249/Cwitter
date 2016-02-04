@@ -1,0 +1,17 @@
+form{
+	margin-top: 10px;
+}
+
+.username{
+	color: gray;
+}
+
+.navbar-default {
+	background-color: #2FC2EF;
+}
+.cweet-btn{
+	background-color: #2FC2EF;
+}
+.navbar-default .navbar-nav>li>a {
+    color: #fcf8e3;
+}

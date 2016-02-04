@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html ng-app="cwitter">
+<head>
+	<title>Cwitter</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.5/angular.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+</head>
+<body>
+ <!-- Static navbar -->
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          
+          <a class="navbar-brand" style="color:white" href="#">Cwitter</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+   
+          <ul class="nav navbar-nav navbar-right">
+            <li><a>Home</a></li>
+            <li ><a>Log in </a></li>
+            <li><a>Sign up</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+	<div ng-controller="cweetController as cweetCtrl" class="container">
+		<form name="cweetform" ng-submit="cweetCtrl.addCweet()">
+
+		  <fieldset class="form-group">
+		    <textarea maxlength="150" ng-model="cweetCtrl.cweet.content" class="form-control" placeholder="What's Happening?" title="cweet"></textarea>
+		  </fieldset>
+		  <fieldset class="form-group">
+		    <input type="submit" ng-disabled="!cweetCtrl.cweet.content" class="btn btn-primary pull-right cweet-btn" value="cweet" />
+		  </fieldset>
+		</form>
+
+		<hr>
+		<!-- cweet logic -->
+		<div ng-repeat="cweet in cweetCtrl.cweets | orderBy: '-id'">
+			<div class="cweet">
+				<strong class="name">{{cweet.name}}</strong> <span class="username">{{cweet.username}}</span>
+				<p class="content">{{cweet.content}}</p>
+				<span ng-click="cweetCtrl.recweetsIncr(cweet)"><i class="fa fa-retweet"></i> {{cweet.recweets}}</span>&nbsp;&nbsp;&nbsp; 
+				<span ng-click="cweetCtrl.likesIncr(cweet)"><i class="fa fa-heart"></i> {{cweet.likes}}</span>
+			</div>
+			<hr>
+		</div>
+	</div>
+
+</body>
+</html>
